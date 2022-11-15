@@ -1253,7 +1253,7 @@
         {
           "allValue": "",
           "current": {
-            "selected": false,
+            "selected": true,
             "text": [
               "virtual-206708b8"
             ],
@@ -1274,7 +1274,7 @@
           "options": [],
           "query": {
             "query": "label_values(container_cpu_user_seconds_total{job=~\"$job\"}, instance)",
-            "refId": "mimir-node-Variable-Query"
+            "refId": "StandardVariableQuery"
           },
           "refresh": 1,
           "regex": "",
@@ -1299,44 +1299,14 @@
             "type": "prometheus",
             "uid": "P46B05499459EE360"
           },
-          "definition": "label_values(container_label_io_kubernetes_pod_namespace)",
+          "definition": "label_values({instance=~\"$node\"},container_label_io_kubernetes_pod_namespace)",
           "hide": 0,
           "includeAll": true,
           "multi": true,
           "name": "namespace",
           "options": [],
           "query": {
-            "query": "label_values(container_label_io_kubernetes_pod_namespace)",
-            "refId": "StandardVariableQuery"
-          },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
-        },
-        {
-          "current": {
-            "selected": true,
-            "text": [
-              "edgeapplication-node-exporter-prometheus-node-exporter-vir9vcbn"
-            ],
-            "value": [
-              "edgeapplication-node-exporter-prometheus-node-exporter-vir9vcbn"
-            ]
-          },
-          "datasource": {
-            "type": "prometheus",
-            "uid": "P46B05499459EE360"
-          },
-          "definition": "label_values(container_cpu_user_seconds_total{container_label_io_kubernetes_pod_namespace=~\"$namespace\"}, container_label_io_kubernetes_pod_name)",
-          "hide": 0,
-          "includeAll": true,
-          "multi": true,
-          "name": "podname",
-          "options": [],
-          "query": {
-            "query": "label_values(container_cpu_user_seconds_total{container_label_io_kubernetes_pod_namespace=~\"$namespace\"}, container_label_io_kubernetes_pod_name)",
+            "query": "label_values({instance=~\"$node\"},container_label_io_kubernetes_pod_namespace)",
             "refId": "StandardVariableQuery"
           },
           "refresh": 1,
@@ -1359,14 +1329,44 @@
             "type": "prometheus",
             "uid": "P46B05499459EE360"
           },
-          "definition": "label_values(container_cpu_user_seconds_total{container_label_io_kubernetes_pod_namespace=~\"$namespace\", container_label_io_kubernetes_pod_name=~\"$podname\"}, container_label_io_kubernetes_container_name)",
+          "definition": "label_values(container_cpu_user_seconds_total{instance=~\"$node\",container_label_io_kubernetes_pod_namespace=~\"$namespace\"}, container_label_io_kubernetes_pod_name)",
+          "hide": 0,
+          "includeAll": true,
+          "multi": true,
+          "name": "podname",
+          "options": [],
+          "query": {
+            "query": "label_values(container_cpu_user_seconds_total{instance=~\"$node\",container_label_io_kubernetes_pod_namespace=~\"$namespace\"}, container_label_io_kubernetes_pod_name)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P46B05499459EE360"
+          },
+          "definition": "label_values(container_cpu_user_seconds_total{instance=~\"$node\",container_label_io_kubernetes_pod_namespace=~\"$namespace\", container_label_io_kubernetes_pod_name=~\"$podname\"}, container_label_io_kubernetes_container_name)\nlabel_values(container_label_io_kubernetes_container_name)",
           "hide": 0,
           "includeAll": true,
           "multi": true,
           "name": "container_name",
           "options": [],
           "query": {
-            "query": "label_values(container_cpu_user_seconds_total{container_label_io_kubernetes_pod_namespace=~\"$namespace\", container_label_io_kubernetes_pod_name=~\"$podname\"}, container_label_io_kubernetes_container_name)",
+            "query": "label_values(container_cpu_user_seconds_total{instance=~\"$node\",container_label_io_kubernetes_pod_namespace=~\"$namespace\", container_label_io_kubernetes_pod_name=~\"$podname\"}, container_label_io_kubernetes_container_name)\nlabel_values(container_label_io_kubernetes_container_name)",
             "refId": "StandardVariableQuery"
           },
           "refresh": 1,
@@ -1409,6 +1409,6 @@
     "timezone": "browser",
     "title": "improved docker",
     "uid": "4dMaCsRZzs",
-    "version": 9,
+    "version": 10,
     "weekStart": ""
   }
