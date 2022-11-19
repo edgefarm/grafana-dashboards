@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 11600,
   "graphTooltip": 1,
-  "id": 2,
+  "id": 7,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -1222,7 +1222,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "cadvisor",
           "value": "cadvisor"
         },
@@ -1253,9 +1253,13 @@
       {
         "allValue": "",
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": [
+            "virtual-72836385"
+          ],
+          "value": [
+            "virtual-72836385"
+          ]
         },
         "datasource": {
           "type": "prometheus",
@@ -1313,13 +1317,9 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": [
-            "edgeapplication-grafana-agent-grafana-agent-operator-virtuwn7kl"
-          ],
-          "value": [
-            "edgeapplication-grafana-agent-grafana-agent-operator-virtuwn7kl"
-          ]
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "prometheus",
@@ -1404,7 +1404,7 @@
   },
   "timezone": "browser",
   "title": "Cadvisor custom",
-  "uid": "4dMaCsRZzs",
+  "uid": "4dMaCsRZzs2",
   "version": 1,
   "weekStart": ""
 }
