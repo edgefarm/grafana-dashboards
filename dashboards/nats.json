@@ -625,7 +625,32 @@
           },
           "unit": "bytes"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "testing-stream"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 6,
@@ -653,9 +678,11 @@
             "type": "prometheus",
             "uid": "P46B05499459EE360"
           },
-          "expr": "sum(nats_stream_total_bytes) by (stream_name)",
+          "editorMode": "code",
+          "expr": "sum(nats_stream_total_bytes{server_id=~\"$server\"}) by (stream_name)",
           "interval": "",
           "legendFormat": "{{stream_name}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -718,7 +745,32 @@
           },
           "unit": "short"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "testing-stream"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 6,
@@ -746,9 +798,11 @@
             "type": "prometheus",
             "uid": "P46B05499459EE360"
           },
-          "expr": "sum(nats_stream_total_messages) by (stream_name)",
+          "editorMode": "code",
+          "expr": "sum(nats_stream_total_messages{server_id=~\"$server\"}) by (stream_name)",
           "interval": "",
           "legendFormat": "{{stream_name}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -811,7 +865,32 @@
           },
           "unit": "mps"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "testing-stream"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 6,
@@ -932,7 +1011,32 @@
           },
           "unit": "mps"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "testing-consumer +"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 6,
@@ -1279,7 +1383,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "nats-main-0",
           "value": "nats-main-0"
         },
@@ -1412,7 +1516,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
