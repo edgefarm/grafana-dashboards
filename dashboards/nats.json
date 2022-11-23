@@ -25,7 +25,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 7,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -1281,12 +1280,8 @@
       {
         "current": {
           "selected": true,
-          "text": [
-            "nats-main-0"
-          ],
-          "value": [
-            "nats-main-0"
-          ]
+          "text": "nats-main-0",
+          "value": "nats-main-0"
         },
         "datasource": {
           "type": "prometheus",
@@ -1294,9 +1289,9 @@
         },
         "definition": "label_values(nats_server_total_streams, server_name)",
         "hide": 0,
-        "includeAll": true,
+        "includeAll": false,
         "label": "Server",
-        "multi": true,
+        "multi": false,
         "name": "server_name",
         "options": [],
         "query": {
@@ -1326,7 +1321,7 @@
           "type": "prometheus",
           "uid": "P46B05499459EE360"
         },
-        "definition": "label_values(nats_stream_last_seq, stream_name)",
+        "definition": "label_values(nats_stream_last_seq{server_name=~\"$server_name\"}, stream_name)",
         "hide": 0,
         "includeAll": true,
         "label": "Stream",
@@ -1334,7 +1329,7 @@
         "name": "stream",
         "options": [],
         "query": {
-          "query": "label_values(nats_stream_last_seq, stream_name)",
+          "query": "label_values(nats_stream_last_seq{server_name=~\"$server_name\"}, stream_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
@@ -1360,7 +1355,7 @@
           "type": "prometheus",
           "uid": "P46B05499459EE360"
         },
-        "definition": "label_values(nats_consumer_num_pending, consumer_name)",
+        "definition": "label_values(nats_consumer_num_pending{server_name=~\"$server_name\"}, consumer_name)",
         "hide": 0,
         "includeAll": true,
         "label": "Consumer",
@@ -1368,7 +1363,7 @@
         "name": "consumer",
         "options": [],
         "query": {
-          "query": "label_values(nats_consumer_num_pending, consumer_name)",
+          "query": "label_values(nats_consumer_num_pending{server_name=~\"$server_name\"}, consumer_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
