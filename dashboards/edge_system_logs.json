@@ -1,41 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_LOKI",
-      "label": "Loki",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "loki",
-      "pluginName": "Loki"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "9.2.4"
-    },
-    {
-      "type": "panel",
-      "id": "logs",
-      "name": "Logs",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "loki",
-      "name": "Loki",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -61,14 +24,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
+  "id": 7,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "loki",
-        "uid": "${DS_LOKI}"
+        "uid": "P8E80F9AEF21F6940"
       },
       "fieldConfig": {
         "defaults": {
@@ -119,10 +82,9 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "${DS_LOKI}"
+            "uid": "P8E80F9AEF21F6940"
           },
-          "editorMode": "builder",
-          "expr": "sum(count_over_time({edge_node=\"$node\", filename=\"$type\"} |= `` [$__interval]))",
+          "expr": "{edge_node=\"$node\", filename=\"$type\"}",
           "queryType": "range",
           "refId": "A"
         }
@@ -133,7 +95,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${DS_LOKI}"
+        "uid": "P8E80F9AEF21F6940"
       },
       "gridPos": {
         "h": 30,
@@ -156,10 +118,9 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "${DS_LOKI}"
+            "uid": "P8E80F9AEF21F6940"
           },
-          "editorMode": "builder",
-          "expr": "{edge_node=\"$node\", filename=\"$type\"} |= ``",
+          "expr": "{edge_node=\"$node\", filename=\"$type\"}",
           "queryType": "range",
           "refId": "A"
         }
@@ -170,18 +131,18 @@
   ],
   "schemaVersion": 37,
   "style": "dark",
-  "tags": [
-    "linux",
-    "loki",
-    "logging"
-  ],
+  "tags": [],
   "templating": {
     "list": [
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "agilis-mc-1",
+          "value": "agilis-mc-1"
+        },
         "datasource": {
           "type": "loki",
-          "uid": "${DS_LOKI}"
+          "uid": "P8E80F9AEF21F6940"
         },
         "definition": "",
         "hide": 0,
@@ -203,10 +164,14 @@
         "type": "query"
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "/var/log/pods/nats_leaf-nats-agilis-mc-1-d8f9f54c9-bfght_9062ef47-5493-4d48-862b-8e495d427b32/nats/0.log",
+          "value": "/var/log/pods/nats_leaf-nats-agilis-mc-1-d8f9f54c9-bfght_9062ef47-5493-4d48-862b-8e495d427b32/nats/0.log"
+        },
         "datasource": {
           "type": "loki",
-          "uid": "${DS_LOKI}"
+          "uid": "P8E80F9AEF21F6940"
         },
         "definition": "",
         "hide": 0,
@@ -236,7 +201,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Edge Node: system logs",
-  "uid": "memTN3F4k",
-  "version": 1,
+  "uid": "dijcfWhVz",
+  "version": 2,
   "weekStart": ""
 }
