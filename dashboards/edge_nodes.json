@@ -151,7 +151,7 @@
           "refId": "A"
         }
       ],
-      "title": "RAM Total",
+      "title": "Memory Total",
       "type": "stat"
     },
     {
@@ -302,13 +302,13 @@
               }
             ]
           },
-          "unit": "dateTimeFromNow"
+          "unit": "dtdhms"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
+        "w": 5,
         "x": 8,
         "y": 0
       },
