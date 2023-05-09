@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -76,7 +75,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
@@ -138,7 +137,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
@@ -212,7 +211,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
@@ -278,7 +277,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
@@ -358,7 +357,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
@@ -665,7 +664,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
@@ -710,7 +709,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 10,
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -906,7 +905,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
@@ -1079,7 +1078,9 @@
         "defaults": {
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "mappings": [],
@@ -1162,8 +1163,11 @@
                 "value": "percentunit"
               },
               {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
               },
               {
                 "id": "max",
@@ -1185,7 +1189,9 @@
       },
       "id": 7,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1200,7 +1206,7 @@
           }
         ]
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
@@ -1551,24 +1557,27 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
+            "fillOpacity": 0,
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
             "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "never",
+            "showPoints": "auto",
             "spanNulls": false,
             "stacking": {
               "group": "A",
-              "mode": "normal"
+              "mode": "none"
             },
             "thresholdsStyle": {
               "mode": "off"
@@ -1623,10 +1632,10 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "node_hwmon_temp_celsius{instance=\"$instance\", job=\"node_exporter\"}",
+          "expr": "node_hwmon_temp_celsius{instance=\"$instance\", job=\"node_exporter\"} > 0",
           "format": "time_series",
           "intervalFactor": 5,
-          "legendFormat": "{{`{{`}}cpu{{`}}`}}",
+          "legendFormat": "{{chip}}-{{sensor}}",
           "range": true,
           "refId": "A"
         }
@@ -1636,7 +1645,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [
     "edgefarm.monitor"
@@ -1721,7 +1730,7 @@
   },
   "timezone": "",
   "title": "Edge Nodes",
-  "uid": null,
+  "uid": "null",
   "version": 1,
   "weekStart": ""
 }
