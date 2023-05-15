@@ -1614,7 +1614,7 @@
         "y": 34
       },
       "id": 41,
-      "interval": "15s",
+      "interval": "2s",
       "links": [],
       "options": {
         "legend": {
