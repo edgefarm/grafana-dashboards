@@ -442,6 +442,7 @@
         "y": 4
       },
       "id": 2,
+      "interval": "2s",
       "links": [],
       "options": {
         "legend": {
@@ -468,7 +469,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "(\n  (1 - sum without (mode) (rate(node_cpu_seconds_total{job=\"node_exporter\", mode=~\"idle|iowait|steal\", instance=\"$instance\"}[5m])))\n/ ignoring(cpu) group_left\n  count without (cpu, mode) (node_cpu_seconds_total{job=\"node_exporter\", mode=\"idle\", instance=\"$instance\"})\n)\n",
+          "expr": "(\n  (1 - sum without (mode) (rate(node_cpu_seconds_total{job=\"node_exporter\", mode=~\"idle|iowait|steal\", instance=\"$instance\"}[$__interval])))\n/ ignoring(cpu) group_left\n  count without (cpu, mode) (node_cpu_seconds_total{job=\"node_exporter\", mode=\"idle\", instance=\"$instance\"})\n)\n",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -545,6 +546,7 @@
         "y": 4
       },
       "id": 43,
+      "interval": "2s",
       "options": {
         "legend": {
           "calcs": [
@@ -758,6 +760,7 @@
         "y": 11
       },
       "id": 4,
+      "interval": "2s",
       "links": [],
       "options": {
         "legend": {
@@ -1014,6 +1017,7 @@
         "y": 18
       },
       "id": 6,
+      "interval": "2s",
       "links": [],
       "options": {
         "legend": {
@@ -1398,6 +1402,7 @@
         "y": 26
       },
       "id": 8,
+      "interval": "15s",
       "links": [],
       "options": {
         "legend": {
@@ -1418,7 +1423,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "rate(node_network_receive_bytes_total{job=\"node_exporter\", instance=\"$instance\", device!=\"lo\"}[5m]) * 8",
+          "expr": "rate(node_network_receive_bytes_total{job=\"node_exporter\", instance=\"$instance\", device!=\"lo\"}[$__interval]) * 8",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{device}}",
@@ -1496,6 +1501,7 @@
         "y": 26
       },
       "id": 9,
+      "interval": "15s",
       "links": [],
       "options": {
         "legend": {
@@ -1516,7 +1522,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "rate(node_network_transmit_bytes_total{job=\"node_exporter\", instance=\"$instance\", device!=\"lo\"}[5m]) * 8",
+          "expr": "rate(node_network_transmit_bytes_total{job=\"node_exporter\", instance=\"$instance\", device!=\"lo\"}[$__interval]) * 8",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{device}}",
@@ -1564,16 +1570,16 @@
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
             },
             "lineWidth": 1,
-            "pointSize": 5,
+            "pointSize": 4,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -1608,6 +1614,7 @@
         "y": 34
       },
       "id": 41,
+      "interval": "15s",
       "links": [],
       "options": {
         "legend": {
