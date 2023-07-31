@@ -1,0 +1,15 @@
+apiVersion: v2
+name: grafana-dashboards
+description: This chart contains a bunch of grafana dashboards that are loaded into grafana by the grafana-operator.
+type: application
+version: 0.1.0
+appVersion: 0.1.0
+keywords:
+  - edgefarm.monitor
+  - grafana
+  - dashboards
+sources:
+  - https://github.com/edgefarm/grafana-dashboards
+maintainers:
+  - name: Armin Schlegel
+    email: armin.schlegel@gmx.de

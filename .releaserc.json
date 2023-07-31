@@ -1,0 +1,39 @@
+{
+  "branches": [
+    {
+      "name": "main"
+    },
+    {
+      "name": "beta",
+      "prerelease": true
+    }
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "cd charts/grafana-dashboards/scripts/ && ./edge_nodes.sh"
+      }
+    ],
+    [
+      "semantic-release-helm3",
+      {
+        "chartPath": "./charts/grafana-dashboards",
+        "registry": "ghcr.io/edgefarm/grafana-dashboards"
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "charts/grafana-dashboards/Chart.yaml",
+          "charts/grafana-dashboards/templates/dashboard-edge-nodes.yaml"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ],
+    "@semantic-release/github"
+  ]
+}
